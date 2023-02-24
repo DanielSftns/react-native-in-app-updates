@@ -9,7 +9,6 @@ import type {
   IosStartUpdateOptions,
   IosNeedsUpdateResponse,
 } from './types';
-import { getVersion } from 'react-native-device-info';
 
 const noop = () => {};
 
@@ -24,7 +23,7 @@ export default class InAppUpdates extends InAppUpdatesBase {
     if (curVersion) {
       appVersion = curVersion;
     } else {
-      appVersion = getVersion();
+      appVersion = curVersion || '1.0.0';
     }
     this.debugLog('Checking store version (iOS)');
     return Siren.performCheck({ country })

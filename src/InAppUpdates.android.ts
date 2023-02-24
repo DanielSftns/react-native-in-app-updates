@@ -1,5 +1,4 @@
 import { NativeModules, NativeEventEmitter } from 'react-native';
-import { getVersion } from 'react-native-device-info';
 
 import { compareVersions } from './utils';
 import {
@@ -95,7 +94,7 @@ export default class InAppUpdates extends InAppUpdatesBase {
     if (curVersion) {
       appVersion = curVersion;
     } else {
-      appVersion = getVersion();
+      appVersion = curVersion || '1.0.0';
     }
     this.debugLog('Checking store version (Android)');
     return SpInAppUpdates.checkNeedsUpdate()
